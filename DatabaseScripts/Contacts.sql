@@ -1,4 +1,4 @@
-CREATE Databse [ContactManagement]
+CREATE Database [ContactManagement]
 GO
 
 USE [ContactManagement]
