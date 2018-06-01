@@ -1,3 +1,6 @@
+CREATE Databse [ContactManagement]
+GO
+
 USE [ContactManagement]
 GO
 
