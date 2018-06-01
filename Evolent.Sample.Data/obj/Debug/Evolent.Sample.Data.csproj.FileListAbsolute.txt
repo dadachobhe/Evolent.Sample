@@ -1,0 +1,12 @@
+C:\Training\Evolent.Sample\Evolent.Sample.Data\bin\Debug\Evolent.Sample.Data.dll.config
+C:\Training\Evolent.Sample\Evolent.Sample.Data\bin\Debug\Evolent.Sample.Data.dll
+C:\Training\Evolent.Sample\Evolent.Sample.Data\bin\Debug\Evolent.Sample.Data.pdb
+C:\Training\Evolent.Sample\Evolent.Sample.Data\bin\Debug\EntityFramework.dll
+C:\Training\Evolent.Sample\Evolent.Sample.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Training\Evolent.Sample\Evolent.Sample.Data\bin\Debug\Evolent.Sample.Core.dll
+C:\Training\Evolent.Sample\Evolent.Sample.Data\bin\Debug\Evolent.Sample.Core.pdb
+C:\Training\Evolent.Sample\Evolent.Sample.Data\bin\Debug\EntityFramework.xml
+C:\Training\Evolent.Sample\Evolent.Sample.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Training\Evolent.Sample\Evolent.Sample.Data\obj\Debug\Evolent.Sample.Data.csprojResolveAssemblyReference.cache
+C:\Training\Evolent.Sample\Evolent.Sample.Data\obj\Debug\Evolent.Sample.Data.dll
+C:\Training\Evolent.Sample\Evolent.Sample.Data\obj\Debug\Evolent.Sample.Data.pdb

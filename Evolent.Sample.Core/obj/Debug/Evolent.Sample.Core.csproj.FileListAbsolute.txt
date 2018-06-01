@@ -1,0 +1,4 @@
+C:\Training\Evolent.Sample\Evolent.Sample.Core\bin\Debug\Evolent.Sample.Core.dll
+C:\Training\Evolent.Sample\Evolent.Sample.Core\bin\Debug\Evolent.Sample.Core.pdb
+C:\Training\Evolent.Sample\Evolent.Sample.Core\obj\Debug\Evolent.Sample.Core.dll
+C:\Training\Evolent.Sample\Evolent.Sample.Core\obj\Debug\Evolent.Sample.Core.pdb
