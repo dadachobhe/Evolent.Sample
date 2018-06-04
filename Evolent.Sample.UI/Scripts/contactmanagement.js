@@ -1,4 +1,4 @@
-﻿
+
 
 var ContactDetails = {
 
@@ -102,36 +102,59 @@ var ContactDetails = {
     },
     insertContactDetails: function () {
 
+       
 
-        $("#btnSubmit").click(function () {
-
-            $.ajax(
-                {
-                    type: "POST", //HTTP POST Method    
-                    url: "api/ContactManagement", // Controller/View     
-                    data: { //Passing data    
-
-                        FirstName: $("#txtFName").val(), //Reading text box values using Jquery     
-                        LastName: $("#txtLName").val(),
-                        Email: $("#txtEmail").val(),
-                        PhoneNumber: $("#txtMobileNo").val(),
-                        Status: $("#status").val()
-                    },
-                    success: function (data) {
-                        //alert(data);
-                        $("#alert-danger").html("<b>" + data + "</b>");
-                        $("#alert-danger").show();
-                        $("#alert-danger").delay(10000).fadeOut("slow");
-                    },
-                    error: function (xhr, ajaxOptions, thrownError) {
-                        //var r = data.responseText;  
-                        //var errorMessage = r.Message;  
-                        $("#alert-danger").html("<b>" + data + "</b>");
-                        $("#alert-danger").show();
-                        $("#alert-danger").delay(10000).fadeOut("slow");
-                        GetContactData();
-                    }
-                });
+        $("#btnSubmit").click(function (e) {
+            var form = document.querySelector('form');
+            if (!form.checkValidity()) {
+            } else {
+                var emailData = $("#txtEmail").val();
+                var phoneData = $("#txtMobileNo").val();
+                var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+                var phoneRegX = /^\d{10}$/;
+                if (!filter.test(emailData)) {
+                    e.preventDefault();
+                    $("#lblerror").show();
+                    $("#lblerror").text("Please enter valid email address.");
+                    $("#txtEmail").focus();
+                    return false;
+                } else if (!phoneRegX.test(phoneData)) {
+                    e.preventDefault();
+                    $("#lblerror").show();
+                    $("#lblerror").text("Please enter valid phone number.");
+                    $("#txtMobileNo").focus();
+                    return false;
+                } else {
+                    $("#lblerror").text("");
+                    $("#lblerror").hide();
+                    $.ajax(
+                        {
+                            type: "POST", //HTTP POST Method    
+                            url: "api/ContactManagement", // Controller/View     
+                            data: { //Passing data    
+                                FirstName: $("#txtFName").val(), //Reading text box values using Jquery     
+                                LastName: $("#txtLName").val(),
+                                Email: $("#txtEmail").val(),
+                                PhoneNumber: $("#txtMobileNo").val(),
+                                Status: $("#status").val()
+                            },
+                            success: function(data) {
+                                //alert(data);
+                                $("#alert-danger").html("<b>" + data + "</b>");
+                                $("#alert-danger").show();
+                                $("#alert-danger").delay(10000).fadeOut("slow");
+                            },
+                            error: function(xhr, ajaxOptions, thrownError) {
+                                //var r = data.responseText;  
+                                //var errorMessage = r.Message;  
+                                $("#alert-danger").html("<b>" + data + "</b>");
+                                $("#alert-danger").show();
+                                $("#alert-danger").delay(10000).fadeOut("slow");
+                                GetContactData();
+                            }
+                        });
+                }
+            }
         });
        
     }
