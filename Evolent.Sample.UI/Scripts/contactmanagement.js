@@ -1,7 +1,6 @@
 
 
 var ContactDetails = {
-
     GetContactData: function () {
         $("#list").jqGrid({
             url: 'api/ContactManagement',
@@ -75,6 +74,9 @@ var ContactDetails = {
            recreateForm: true,
            loadonce: true,
            align: 'center',
+           onclickSubmit: function (response, postdata) {
+               alert('hi');
+           },
            afterComplete: function (response) {
                GetContactData();
                if (response.responseText) {
@@ -91,6 +93,41 @@ var ContactDetails = {
            closeAfterdel: true,
            recreateForm: true,
            msg: "Are you sure you want to delete this contact?",
+           afterShowForm: function ($form) {
+               //$("#dData", $form.parent()).click();
+               if (confirm('Are you sure you want to delete this contact?')) {
+                   var myGrid = $('#list'),
+                   selectedRowId = myGrid.jqGrid ('getGridParam', 'selrow'),
+                   cellValue = myGrid.jqGrid('getCell', selectedRowId, 'Id');
+                   $.ajax(
+                       {
+                           type: "DELETE", //HTTP POST Method    
+                           url: "api/ContactManagement", // Controller/View     
+                           data: { //Passing data    
+                               id: cellValue
+                           },
+                           success: function (data) {
+                               $("#alert-danger").html("<b>" + data + "</b>");
+                               $("#alert-danger").show();
+                               $("#alert-danger").delay(10000).fadeOut("slow");
+                               GetContactData();
+                               return [true, ''];
+                           },
+                           error: function (xhr, ajaxOptions, thrownError) {
+                               $("#alert-danger").html("<b>" + thrownError + "</b>");
+                               $("#alert-danger").show();
+                               $("#alert-danger").delay(10000).fadeOut("slow");
+                               GetContactData();
+                               return [false, 'You can not submit!'];
+                           }
+                       });
+               } else {
+                   return [false, 'You can not submit!'];
+               }
+           },
+           beforeSubmit: function (postdata, form, oper) {
+               
+           },
            afterComplete: function (response) {
                if (response.responseText) {
                    $("#alert-Grid").html("<b>" + response.responseText + "</b>");
@@ -101,9 +138,6 @@ var ContactDetails = {
        });
     },
     insertContactDetails: function () {
-
-       
-
         $("#btnSubmit").click(function (e) {
             var form = document.querySelector('form');
             if (!form.checkValidity()) {
